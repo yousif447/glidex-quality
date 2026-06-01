@@ -2,40 +2,59 @@
 import { useEffect, useRef } from "react";
 import { Target, Globe2, UserCheck, Lock, Zap, BarChart3 } from "lucide-react";
 
-const reasons = [
-  {
-    icon: Target,
-    title: "Precision Expertise",
-    desc: "Our auditors bring deep domain knowledge across industries, ensuring accurate, reliable certification assessments every time.",
-  },
-  {
-    icon: Globe2,
-    title: "Global Recognition",
-    desc: "Certificates issued by Glidex Quality are recognized internationally through IAF and EGAC accreditation networks.",
-  },
-  {
-    icon: UserCheck,
-    title: "Client-First Approach",
-    desc: "We tailor every engagement to your organization's unique needs, size, and sector — no one-size-fits-all here.",
-  },
-  {
-    icon: Lock,
-    title: "Uncompromising Integrity",
-    desc: "Strict impartiality and ethical conduct govern every audit, protecting the value of your certification.",
-  },
-  {
-    icon: Zap,
-    title: "Fast-Track Process",
-    desc: "Our streamlined certification pathway gets you certified quickly without cutting corners on quality.",
-  },
-  {
-    icon: BarChart3,
-    title: "Continuous Improvement",
-    desc: "Beyond certification, our experts help you build a culture of ongoing excellence and measurable growth.",
-  },
-];
 
 export default function WhyUs({ data, lang }) {
+  const reasons = [
+    {
+      icon: Target,
+      title: lang === "en" ? "Precision Expertise" : "خبرة دقيقة ومتخصصة",
+      desc:
+        lang === "en"
+          ? "Our auditors bring deep domain knowledge across industries, ensuring accurate, reliable certification assessments every time."
+          : "يمتلك مدققونا خبرة عميقة في مختلف القطاعات، مما يضمن تقييمات اعتماد دقيقة وموثوقة في كل مرة.",
+    },
+    {
+      icon: Globe2,
+      title: lang === "en" ? "Global Recognition" : "اعتراف دولي",
+      desc:
+        lang === "en"
+          ? "Certificates issued by Glidex Quality are recognized internationally through IAF and EGAC accreditation networks."
+          : "شهادات Glidex Quality معترف بها دوليًا من خلال شبكات الاعتماد التابعة لـ IAF و EGAC.",
+    },
+    {
+      icon: UserCheck,
+      title: lang === "en" ? "Client-First Approach" : "العميل أولاً",
+      desc:
+        lang === "en"
+          ? "We tailor every engagement to your organization's unique needs, size, and sector — no one-size-fits-all here."
+          : "نصمم خدماتنا بما يتناسب مع احتياجات مؤسستك وحجمها وقطاعها، دون الاعتماد على حلول موحدة للجميع.",
+    },
+    {
+      icon: Lock,
+      title: lang === "en" ? "Uncompromising Integrity" : "نزاهة بلا مساومة",
+      desc:
+        lang === "en"
+          ? "Strict impartiality and ethical conduct govern every audit, protecting the value of your certification."
+          : "تحكم الحيادية الصارمة والأخلاقيات المهنية جميع عمليات التدقيق، مما يحافظ على قيمة شهادتك.",
+    },
+    {
+      icon: Zap,
+      title: lang === "en" ? "Fast-Track Process" : "إجراءات سريعة وفعالة",
+      desc:
+        lang === "en"
+          ? "Our streamlined certification pathway gets you certified quickly without cutting corners on quality."
+          : "يتيح لك مسار الاعتماد المبسط الحصول على الشهادة بسرعة دون المساس بالجودة أو المتطلبات.",
+    },
+    {
+      icon: BarChart3,
+      title: lang === "en" ? "Continuous Improvement" : "التحسين المستمر",
+      desc:
+        lang === "en"
+          ? "Beyond certification, our experts help you build a culture of ongoing excellence and measurable growth."
+          : "لا يقتصر دورنا على منح الشهادات، بل نساعدك على بناء ثقافة التميز والتحسين المستمر والنمو القابل للقياس.",
+    },
+  ];
+
   const ref = useRef(null);
 
   useEffect(() => {
@@ -72,31 +91,31 @@ export default function WhyUs({ data, lang }) {
                 transition: "all 0.5s ease",
               }}
             >
-              — Why Glidex
+              {lang === "en" ? "— Why Glidex" : "— لماذا جلايدكس"}
             </div>
             <h2
-              className="why-reveal  text-5xl md:text-6xl font-bold text-[#022d60] leading-tight mb-8"
-              style={{
-                opacity: 0,
-                transform: "translateY(25px)",
-                transition: "all 0.6s ease",
-              }}
+              className="why-reveal text-5xl md:text-6xl font-bold text-[#022d60] leading-tight mb-8"
             >
-              The Standard
-              <br />
-              <span className="text-[#00844a]">for Standards</span>
+              {lang === "en" ? (
+                <>
+                  The Standard
+                  <br />
+                  <span className="text-[#00844a]">for Standards</span>
+                </>
+              ) : (
+                <>
+                  المعيار
+                  <br />
+                  <span className="text-[#00844a]">في عالم المعايير</span>
+                </>
+              )}
             </h2>
             <p
               className="why-reveal text-[#64748b] text-lg leading-relaxed mb-10"
-              style={{
-                opacity: 0,
-                transform: "translateY(15px)",
-                transition: "all 0.5s ease",
-              }}
             >
-              When you choose Glidex Quality, you're choosing a partner
-              committed to your long-term success — not just a stamp on a
-              document.
+              {lang === "en"
+                ? "When you choose Glidex Quality, you're choosing a partner committed to your long-term success — not just a stamp on a document."
+                : "عندما تختار Glidex Quality فأنت تختار شريكًا ملتزمًا بنجاحك على المدى الطويل، وليس مجرد جهة تمنح شهادة."}
             </p>
 
             {/* Visual accent: rotating border card */}
@@ -115,7 +134,9 @@ export default function WhyUs({ data, lang }) {
                       100%
                     </div>
                     <div className="text-sm text-[#64748b]">
-                      Accredited Certification Rate
+                      {lang === "en"
+                        ? "Accredited Certification Rate"
+                        : "معدل الشهادات المعتمدة"}
                     </div>
                   </div>
                   <div className="w-px h-12 bg-[#e2e8f0]" />
@@ -124,7 +145,9 @@ export default function WhyUs({ data, lang }) {
                       25+
                     </div>
                     <div className="text-sm text-[#64748b]">
-                      Expert Auditors
+                      {lang === "en"
+                        ? "Expert Auditors"
+                        : "مدققون وخبراء"}
                     </div>
                   </div>
                 </div>
@@ -132,7 +155,9 @@ export default function WhyUs({ data, lang }) {
                   <div className="h-full w-4/5 bg-gradient-to-r from-[#022d60] to-[#00844a] rounded-full" />
                 </div>
                 <div className="mt-2 text-xs text-[#64748b] font-mono">
-                  Client satisfaction rate: 98.4%
+                  {lang === "en"
+                    ? "Client satisfaction rate: 98.4%"
+                    : "معدل رضا العملاء: 98.4%"}
                 </div>
               </div>
             </div>
