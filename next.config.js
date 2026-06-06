@@ -5,11 +5,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "admin.absglobals.com",
+        hostname: "admin.glidexquality.com",
         pathname: "/storage/**",
       }
     ],
   },
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig;
