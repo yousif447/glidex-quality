@@ -245,7 +245,7 @@ export default function ServicesPage({ data, lang }) {
               {lang === "en" ? "Ready to Get Certified?" : "هل أنت مستعد للحصول على الشهادة؟"}
             </h3>
             <p className="text-blue-200 mb-6 max-w-lg mx-auto">
-              {lang === "en" ? "Our experts will guide you through the entire certification process. Contact us today for a free consultation and custom quote." : "سيُرشدك خبراؤنا خلال عملية الاعتماد بأكملها. تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مُخصّص."}
+              {lang === "en" ? "Our experts will guide you through the entire accreditation process. Contact us today to begin your accreditation journey." : "سيُرشدك خبراؤنا خلال عملية الاعتماد بأكملها. تواصل معنا اليوم لبدء رحلة الاعتماد الخاصة بك."}
             </p>
             <Link
               href={`/${lang}/contact-us`}

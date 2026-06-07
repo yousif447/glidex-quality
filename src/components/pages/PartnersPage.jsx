@@ -182,7 +182,7 @@ export default function PartnersPage({ data, lang }) {
             href={`/${lang}/contact-us`}
             className="inline-flex items-center gap-2 bg-white text-[#022d60] px-10 py-4 rounded-2xl font-bold hover:bg-[#00844a] hover:text-white transition-all shadow-xl"
           >
-            {lang === 'ar' ? "اطلب استشارة الآن" : "Book a Consultation"}
+            {lang === 'ar' ? "تواصل معنا الآن" : "Contact Us Now"}
           </Link>
         </div>
       </section>

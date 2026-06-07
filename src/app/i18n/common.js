@@ -35,7 +35,6 @@ export const t = (lang) => {
       formPlaceholderMsg: "Tell us about your certification needs...",
       ctaDescription: "Fill out the form and one of our certification experts will be in touch within 24 hours to discuss your specific requirements.",
       features: [
-        { label: "Free initial consultation", sub: "No commitment required" },
         { label: "Custom timeline planning", sub: "Tailored to your schedule" },
         { label: "Transparent pricing", sub: "No hidden fees" }
       ],
@@ -80,7 +79,6 @@ export const t = (lang) => {
       formPlaceholderMsg: "أخبرنا عن احتياجاتك للحصول على الشهادة...",
       ctaDescription: "املأ النموذج وسيتواصل معك أحد خبراء الاعتماد لدينا في غضون 24 ساعة لمناقشة متطلباتك الخاصة.",
       features: [
-        { label: "استشارة أولية مجانية", sub: "بدون التزامات" },
         { label: "تخطيط زمني مخصص", sub: "مصمم وفقاً لجدولك" },
         { label: "تسعير شفاف", sub: "لا توجد رسوم خفية" }
       ],
