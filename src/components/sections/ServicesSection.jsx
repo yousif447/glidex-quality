@@ -9,7 +9,6 @@ const FALLBACK_COLORS = ["#022d60", "#00844a", "#0a4a9c", "#006038", "#022d60", 
 
 const stripHtml = (html) => html?.replace(/<[^>]*>/g, "").trim() ?? "";
 
-/** Bullet points from API description HTML (<ul><li>…</li></ul>) */
 const extractListItems = (html) => {
   if (!html) return [];
   const matches = html.match(/<li[^>]*>[\s\S]*?<\/li>/gi);
@@ -17,7 +16,6 @@ const extractListItems = (html) => {
   return matches.map((li) => stripHtml(li)).filter(Boolean);
 };
 
-/** First paragraph for the detail panel (avoids duplicating the bullet list) */
 const getLeadingDescription = (html) => {
   if (!html) return "";
   const firstPara = html.match(/<p[^>]*>[\s\S]*?<\/p>/i);
@@ -60,39 +58,27 @@ export default function ServicesSection({ data, lang }) {
   if (!serviceSection || sectionItems.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#f8f9fc]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-16">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-[#f8f9fc]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="mb-10 md:mb-16">
           <div
             className="srv-reveal text-xs font-mono font-bold tracking-[0.3em] text-[#00844a] uppercase mb-4"
-            style={{
-              opacity: 0,
-              transform: "translateY(15px)",
-              transition: "all 0.5s ease",
-            }}
+            style={{ opacity: 0, transform: "translateY(15px)", transition: "all 0.5s ease" }}
           >
             — {serviceSection.header_title ?? "Our Services"}
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-xl">
               <h2
-                className="srv-reveal  text-4xl md:text-5xl font-bold text-[#022d60]"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(20px)",
-                  transition: "all 0.6s ease",
-                }}
+                className="srv-reveal text-3xl md:text-5xl font-bold text-[#022d60]"
+                style={{ opacity: 0, transform: "translateY(20px)", transition: "all 0.6s ease" }}
               >
                 {serviceSection.header_title ?? "Certification Standards We Offer"}
               </h2>
               {serviceSection.header_description && (
                 <p
                   className="srv-reveal mt-4 text-[#64748b] text-sm leading-relaxed"
-                  style={{
-                    opacity: 0,
-                    transform: "translateY(15px)",
-                    transition: "all 0.5s ease",
-                  }}
+                  style={{ opacity: 0, transform: "translateY(15px)", transition: "all 0.5s ease" }}
                 >
                   {stripHtml(serviceSection.header_description)}
                 </p>
@@ -101,28 +87,22 @@ export default function ServicesSection({ data, lang }) {
             <Link
               href={`/${lang}/our-service`}
               className="srv-reveal flex items-center gap-2 text-[#022d60] font-semibold text-sm hover:gap-3 transition-all group shrink-0"
-              style={{
-                opacity: 0,
-                transform: "translateY(15px)",
-                transition: "all 0.5s ease",
-              }}
+              style={{ opacity: 0, transform: "translateY(15px)", transition: "all 0.5s ease" }}
             >
               {lang === "en" ? "View all services" : "عرض جميع الخدمات"}
-              <ArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8">
+          {/* ─── Detail Card ─── */}
           <div
-            className="srv-reveal lg:col-span-3 bg-white rounded-3xl border border-[#e2e8f0] shadow-lg p-10 flex flex-col transition-all duration-300"
+            className="srv-reveal lg:col-span-3 bg-white rounded-3xl border border-[#e2e8f0] shadow-lg p-6 md:p-10 flex flex-col transition-all duration-300 min-w-0"
             style={{ opacity: 1, transform: "none" }}
           >
             {current.image && (
-              <div className="relative w-25 h-25 rounded-2xl flex items-center justify-center mb-6 overflow-hidden">
+              <div className="relative w-16 h-16 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 overflow-hidden flex-shrink-0">
                 <Image
                   src={`${IMAGE_BASE}${current.image}`}
                   alt={current.name}
@@ -137,18 +117,20 @@ export default function ServicesSection({ data, lang }) {
                 {current.certificate_category.trim()}
               </div>
             )}
-            <h3 className=" text-3xl font-bold text-[#022d60] mb-4">
+
+            <h3 className="text-xl md:text-3xl font-bold text-[#022d60] mb-4 leading-snug">
               {current.name}
             </h3>
-            <p className="text-[#64748b] leading-relaxed mb-8">
+
+            <p className="text-[#64748b] text-sm md:text-base leading-relaxed mb-6 md:mb-8">
               {getLeadingDescription(current.description)}
             </p>
 
             {bullets.length > 0 && (
-              <div className="space-y-3 mb-10">
+              <div className="space-y-3 mb-8 md:mb-10">
                 {bullets.map((point) => (
-                  <div key={point} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00844a]/10 flex items-center justify-center flex-shrink-0">
+                  <div key={point} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#00844a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <div className="w-2 h-2 rounded-full bg-[#00844a]" />
                     </div>
                     <span className="text-sm font-medium text-[#0f172a]">{point}</span>
@@ -157,30 +139,31 @@ export default function ServicesSection({ data, lang }) {
               </div>
             )}
 
-            <div className="mt-auto flex flex-wrap gap-4">
+            <div className="mt-auto flex flex-wrap gap-3">
               <Link
                 href={`/${lang}/contact-us`}
-                className="flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-all"
+                className="flex items-center gap-2 text-white px-5 py-3 rounded-xl font-semibold text-sm hover:opacity-90 transition-all"
                 style={{ backgroundColor: accentColor }}
               >
                 {lang === "en" ? "Request Certificate" : "اطلب شهادة"} <ArrowRight size={16} />
               </Link>
               <Link
                 href={`/${lang}/our-service/${current.slug}`}
-                className="text-sm font-medium text-[#64748b] hover:text-[#022d60] px-6 py-3 rounded-xl hover:bg-[#022d60]/5 transition-all"
+                className="text-sm font-medium text-[#64748b] hover:text-[#022d60] px-5 py-3 rounded-xl hover:bg-[#022d60]/5 transition-all"
               >
                 {lang === "en" ? "Learn more" : "تعرف على المزيد"}
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-2 space-y-2">
+          {/* ─── Sidebar List ─── */}
+          <div className="lg:col-span-2 space-y-2 min-w-0">
             {sectionItems.map((item, i) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setActive(i)}
-                className={`srv-reveal w-full flex items-center gap-4 p-5 rounded-2xl text-left transition-all ${
+                className={`srv-reveal w-full flex items-center gap-3 p-4 md:p-5 rounded-2xl text-left transition-all min-w-0 ${
                   safeActive === i
                     ? "bg-[#022d60] text-white shadow-xl shadow-[#022d60]/20"
                     : "bg-white text-[#0f172a] hover:bg-[#022d60]/5 border border-[#e2e8f0]"
@@ -193,7 +176,7 @@ export default function ServicesSection({ data, lang }) {
                 }}
               >
                 {item.image && (
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
                     <Image
                       src={`${IMAGE_BASE}${item.image}`}
                       alt={item.name}
@@ -203,11 +186,13 @@ export default function ServicesSection({ data, lang }) {
                     />
                   </div>
                 )}
-                <div className="min-w-0">
-                  <div className="font-semibold text-sm truncate">{item.certificate_category?.trim()}</div>
+                {/* ✅ min-w-0 + overflow-hidden fixes text overflow */}
+                <div className="min-w-0 flex-1 overflow-hidden">
+                  <div className="font-semibold text-sm truncate">
+                    {item.certificate_category?.trim()}
+                  </div>
                   <div
-                    dir={lang === "ar" ? "ltr" : "ltr"}
-                    className={`text-xs mt-0.5 line-clamp-2 ${
+                    className={`text-xs mt-0.5 truncate ${
                       safeActive === i ? "text-white/70" : "text-[#64748b]"
                     }`}
                   >
